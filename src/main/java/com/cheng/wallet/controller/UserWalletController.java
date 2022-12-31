@@ -18,13 +18,16 @@ public class UserWalletController {
     private UserWalletService userWalletService;
 
     @Autowired
-    OrderRecordService orderRecordService;
+    private OrderRecordService orderRecordService;
 
 
     //查询用户钱包余额
     @RequestMapping(value ="userWallet/queryBalance/{userId}",method = RequestMethod.POST)
     public Result queryBalance(@PathVariable Long userId){
         UserWalletDto user = userWalletService.query(userId);
+        if (user==null){
+            return Result.error("用户不存在");
+        }
         BigDecimal balance = user.getBalance();
         return Result.ok(balance);
     }

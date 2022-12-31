@@ -18,10 +18,10 @@ public class OrderRecordServiceImpl implements OrderRecordService {
 
 
     @Autowired
-    OrderRecordMapper orderRecordMapper;
+    private OrderRecordMapper orderRecordMapper;
 
     @Autowired
-    UserWalletMapper userWalletMapper;
+    private UserWalletMapper userWalletMapper;
 
     @Override
     @Transactional
